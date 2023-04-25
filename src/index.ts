@@ -191,6 +191,12 @@ export class igApi {
 			video_duration: item?.video_duration || null,
 			music: item?.clips_metadata || null,
 			links: this._formatSidecar(metadata),
+			thumb: v.media_type == MediaType.IMAGE ? v.image_versions2.candidates[0].url : v.video_versions?.[0].url || '',
+					type: v.media_type == MediaType.IMAGE ? 'image' : 'video',
+					dimensions: {
+						height: v.media_type == MediaType.IMAGE ? v.image_versions2.candidates[0].height : v.video_versions?.[0].height || 0,
+						width: v.media_type == MediaType.IMAGE ? v.image_versions2.candidates[0].width : v.video_versions?.[0].width || 0
+					}
 		}
 	}
 
